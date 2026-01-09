@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { BsQrCode } from 'react-icons/bs';
+import { AiFillCloseCircle } from 'react-icons/ai';
 
 import { phone, phone2, wave } from '../../../assets';
 
 const HeroSection = () => {
+  const [showQRModal, setShowQRModal] = useState(false);
+
   return (
     <section className='hero-section w-full' id='hero'>
       <div class='wave '>
@@ -61,15 +65,32 @@ const HeroSection = () => {
               <p data-aos='fade-right' data-aos-delay='100'>
                 Entire world is on your pocket now!
               </p>
-              <p
+              <div
                 data-aos='fade-right'
                 data-aos-delay='200'
                 data-aos-offset='-500'
+                className='flex items-center gap-3 flex-wrap justify-center lg:justify-start'
               >
-                <a href='df' className='btn btn-outline-white'>
-                  Get started
+                <a
+                  href='https://play.google.com/store/apps/details?id=com.iamkw97.mylibraryv3&pcampaignid=web_share'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='inline-block play-badge-shine'
+                >
+                  <img
+                    src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'
+                    alt='Get it on Google Play'
+                    className='h-14 sm:h-16 md:h-20'
+                  />
                 </a>
-              </p>
+                <button
+                  onClick={() => setShowQRModal(true)}
+                  className='btn btn-outline-white d-inline-flex align-items-center gap-2 qr-btn-shine'
+                >
+                  <BsQrCode fontSize={20} />
+                  <span>Scan QR</span>
+                </button>
+              </div>
             </div>
             <div className='col-lg-4 iphone-wrap'>
               <img
@@ -89,6 +110,44 @@ const HeroSection = () => {
           </div>
         </div>
       </motion.div>
+
+      {/* QR Code Modal */}
+      {showQRModal && (
+        <div
+          className='qr-modal-overlay'
+          onClick={() => setShowQRModal(false)}
+        >
+          <div
+            className='qr-modal-content'
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setShowQRModal(false)}
+              className='absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors'
+              aria-label='Close modal'
+            >
+              <AiFillCloseCircle fontSize={28} />
+            </button>
+            <div className='text-center mt-4'>
+              <h3 className='text-2xl font-bold mb-4 text-heading'>Scan QR Code</h3>
+              <div className='flex justify-center mb-4 p-4 bg-gray-50 rounded-lg'>
+                <img
+                  src='/qr-code.png'
+                  alt='QR Code'
+                  className='max-w-full h-auto border-2 border-gray-300 rounded'
+                  style={{ maxWidth: '300px', maxHeight: '300px' }}
+                  onError={(e) => {
+                    e.target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="200"%3E%3Crect width="200" height="200" fill="white" stroke="%23ccc" stroke-width="2"/%3Ctext x="50%25" y="50%25" text-anchor="middle" dy=".3em" fill="black" font-family="Arial" font-size="16"%3EQR Code Image%3C/text%3E%3Ctext x="50%25" y="60%25" text-anchor="middle" dy=".3em" fill="gray" font-family="Arial" font-size="12"%3EAdd /qr-code.png to public folder%3C/text%3E%3C/svg%3E';
+                  }}
+                />
+              </div>
+              <p className='text-gray-600'>
+                Scan this QR code to download the MyLibrary app
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
