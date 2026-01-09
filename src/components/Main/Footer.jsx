@@ -7,9 +7,9 @@ import { FaLinkedinIn } from 'react-icons/fa';
 const Footer = () => {
   return (
     <div>
-      <button className='btn btn-primary absolute top-5 right-5'>
+      {/* <button className='btn btn-primary absolute top-5 right-5'>
         Let's Chat
-      </button>
+      </button> */}
       <div className='container'>
         <div className='row'>
           <div className='col-md-4 mb-4 mb-md-0'>
