@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaGooglePlay, FaApple } from 'react-icons/fa';
+import { googlePlayBadge } from '../../../assets';
 
 const AppSection = () => {
   return (
@@ -11,19 +11,17 @@ const AppSection = () => {
           </div>
           <div className='col-md-5 text-center text-md-end'>
             <p>
-             {/* <a
-                href='#'
-                className='btn d-inline-flex align-items-center gap-2 mt-2'
-              >
-                <FaApple fontSize={24} />
-                <span>App store</span>
-              </a> */} {' '}
               <a
                 href='https://play.google.com/store/apps/details?id=com.iamkw97.mylibraryv3&pcampaignid=web_share'
-                className='btn d-inline-flex align-items-center gap-2 mt-2 sm:mt-0'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='inline-block play-badge-shine mt-2 sm:mt-0'
               >
-                <FaGooglePlay fontSize={22} />
-                <span>Google play</span>
+                <img
+                  src={googlePlayBadge}
+                  alt='Get it on Google Play'
+                  className='h-[50px]'
+                />
               </a>
             </p>
           </div>
