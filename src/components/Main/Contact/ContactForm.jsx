@@ -22,7 +22,27 @@ const ContactForm = () => {
               </li>
               <li class='mb-3'>
                 <strong class='d-block mb-1'>Whatsapp</strong>
-                <span>+94 72 076 4777</span>
+                <a
+                  href='https://wa.me/message/AHKH6P2IGSGVB1'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  style={{
+                    color: '#25D366',
+                    textDecoration: 'none',
+                    fontWeight: '500',
+                    transition: 'opacity 0.3s ease',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.opacity = '0.8';
+                    e.currentTarget.style.textDecoration = 'underline';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.opacity = '1';
+                    e.currentTarget.style.textDecoration = 'none';
+                  }}
+                >
+                  +94 74 076 4777
+                </a>
               </li>
               <li class='mb-3'>
                 <strong class='d-block mb-1'>Email</strong>
