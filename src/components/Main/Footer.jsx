@@ -79,9 +79,9 @@ const Footer = () => {
               <div className='col-md-4 mb-4 mb-md-0'>
                 <h3 className='text-white'>Downloads</h3>
                 <ul className='list-unstyled'>
-                  <li>
+                  {/* <li>
                     <a href='#'>Get from the App Store</a>
-                  </li>
+                  </li> */}
                   <li>
                     <a href='#'>Get from the Play Store</a>
                   </li>
