@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { BsQrCode } from 'react-icons/bs';
 import { AiFillCloseCircle } from 'react-icons/ai';
+import { FaWhatsapp } from 'react-icons/fa';
 
-import { phone, phone2, wave } from '../../../assets';
+import { phone, phone2, wave, googlePlayBadge } from '../../../assets';
 
 const HeroSection = () => {
   const [showQRModal, setShowQRModal] = useState(false);
@@ -69,27 +70,46 @@ const HeroSection = () => {
                 data-aos='fade-right'
                 data-aos-delay='200'
                 data-aos-offset='-500'
-                className='flex items-center gap-3 flex-wrap justify-center lg:justify-start'
+                className='flex flex-col gap-3 justify-center lg:justify-start'
               >
-                <a
-                  href='https://play.google.com/store/apps/details?id=com.iamkw97.mylibraryv3&pcampaignid=web_share'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='inline-block play-badge-shine'
-                >
-                  <img
-                    src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'
-                    alt='Get it on Google Play'
-                    className='h-14 sm:h-16 md:h-20'
-                  />
-                </a>
-                <button
-                  onClick={() => setShowQRModal(true)}
-                  className='btn btn-outline-white d-inline-flex align-items-center gap-2 qr-btn-shine'
-                >
-                  <BsQrCode fontSize={20} />
-                  <span>Scan QR</span>
-                </button>
+                <div className='flex items-center gap-3 flex-wrap justify-center lg:justify-start'>
+                  <a
+                    href='https://play.google.com/store/apps/details?id=com.iamkw97.mylibraryv3&pcampaignid=web_share'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='inline-block play-badge-shine'
+                  >
+                    <img
+                      src={googlePlayBadge}
+                      alt='Get it on Google Play'
+                      className='h-[50px]'
+                    />
+                  </a>
+                  <button
+                    onClick={() => setShowQRModal(true)}
+                    className='h-[48px] btn btn-outline-white d-inline-flex align-items-center gap-2 qr-btn-shine'
+                  >
+                    <BsQrCode fontSize={20} />
+                    <span>Scan QR</span>
+                  </button>
+                </div>
+                <div className='flex items-center gap-3 flex-wrap justify-center lg:justify-start'>
+                  <span className='text-white'>Need help?</span>
+                  <a
+                    href='https://wa.me/message/AHKH6P2IGSGVB1'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='h-[48px] btn btn-outline-white d-inline-flex align-items-center gap-2'
+                    style={{
+                      backgroundColor: '#25D366',
+                      borderColor: '#25D366',
+                      color: '#fff',
+                    }}
+                  >
+                    <FaWhatsapp fontSize={20} />
+                    <span>Chat with us</span>
+                  </a>
+                </div>
               </div>
             </div>
             <div className='col-lg-4 iphone-wrap'>
