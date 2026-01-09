@@ -66,6 +66,7 @@ import cover from './cover.jpg';
 
 import wave from './wave.png';
 import googlePlayBadge from './en_badge_web_generic.png';
+import qrGplay from './qr-gplay.png';
 
 export {
   help,
@@ -119,7 +120,8 @@ export {
   audio2,
   audio1,
   audio3,
- wave,
+  wave,
   googlePlayBadge,
+  qrGplay,
 
 };

@@ -4,7 +4,7 @@ import { BsQrCode } from 'react-icons/bs';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { FaWhatsapp } from 'react-icons/fa';
 
-import { phone, phone2, wave, googlePlayBadge } from '../../../assets';
+import { phone, phone2, wave, googlePlayBadge, qrGplay } from '../../../assets';
 
 const HeroSection = () => {
   const [showQRModal, setShowQRModal] = useState(false);
@@ -148,21 +148,17 @@ const HeroSection = () => {
             >
               <AiFillCloseCircle fontSize={28} />
             </button>
-            <div className='text-center mt-4'>
-              <h3 className='text-2xl font-bold mb-4 text-heading'>Scan QR Code</h3>
-              <div className='flex justify-center mb-4 p-4 bg-gray-50 rounded-lg'>
+            <div className='text-center mt-2'>
+              <div className='flex justify-center mb-4 p-1 rounded-lg'>
                 <img
-                  src='/qr-code.png'
+                  src={qrGplay}
                   alt='QR Code'
                   className='max-w-full h-auto border-2 border-gray-300 rounded'
                   style={{ maxWidth: '300px', maxHeight: '300px' }}
-                  onError={(e) => {
-                    e.target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="200"%3E%3Crect width="200" height="200" fill="white" stroke="%23ccc" stroke-width="2"/%3Ctext x="50%25" y="50%25" text-anchor="middle" dy=".3em" fill="black" font-family="Arial" font-size="16"%3EQR Code Image%3C/text%3E%3Ctext x="50%25" y="60%25" text-anchor="middle" dy=".3em" fill="gray" font-family="Arial" font-size="12"%3EAdd /qr-code.png to public folder%3C/text%3E%3C/svg%3E';
-                  }}
                 />
               </div>
-              <p className='text-gray-600'>
-                Scan this QR code to download the MyLibrary app
+              <p className='text-gray-700 font-medium text-base mb-0' style={{ color: '#374151' }}>
+                Scan the QR code to Download the App
               </p>
             </div>
           </div>
