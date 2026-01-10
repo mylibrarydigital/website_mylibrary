@@ -15,6 +15,9 @@ RUN npm run build
 # Nginx to serve the build
 FROM nginx:alpine
 
+# Install wget for health checks
+RUN apk add --no-cache wget
+
 # Copy the React build files into Nginx's default directory
 COPY --from=build /app/build /usr/share/nginx/html
 

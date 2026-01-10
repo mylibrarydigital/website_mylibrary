@@ -36,11 +36,11 @@ jobs:
 
       - name: Build Website Docker Image
         run: |
-          docker build -t mylibrary.lk:${{ github.sha }} .
-          docker tag mylibrary.lk:${{ github.sha }} mylibrary.lk:latest
+          docker build -t mylibrary-website-live:${{ github.sha }} .
+          docker tag mylibrary-website-live:${{ github.sha }} mylibrary-website-live:latest
 
       - name: Save Docker Image
-        run: docker save mylibrary.lk:latest | gzip > mylibrary.lk.tar.gz
+        run: docker save mylibrary-website-live:latest | gzip > mylibrary-website-live.tar.gz
 
       - name: Copy Docker Image to Lightsail
         uses: appleboy/scp-action@master
@@ -48,7 +48,7 @@ jobs:
           host: ${{ secrets.LIGHTSAIL_LIVE_IP }}
           username: ubuntu
           key: ${{ secrets.LIGHTSAIL_LIVE_SSH_KEY }}
-          source: mylibrary.lk.tar.gz
+          source: mylibrary-website-live.tar.gz
           target: /opt/mylibrary/mylibrary.lk/
 
       - name: Deploy on Lightsail
@@ -62,23 +62,25 @@ jobs:
             cd /opt/mylibrary/mylibrary.lk
 
             # Load and run container
-            docker load < mylibrary.lk.tar.gz
-            docker stop mylibrary.lk || true
-            docker rm mylibrary.lk || true
+            docker load < mylibrary-website-live.tar.gz
+            docker stop mylibrary-website-live || true
+            docker rm mylibrary-website-live || true
 
             # Run container
             docker run -d \
-              --name mylibrary.lk \
+              --name mylibrary-website-live \
               --restart unless-stopped \
               -p 3001:80 \
               --network mylibrary-network \
               --log-driver json-file \
               --log-opt max-size=10m \
               --log-opt max-file=3 \
+              --health-cmd "wget --no-verbose --tries=1 --spider http://localhost/health || exit 1" \
               --health-interval=30s \
               --health-timeout=10s \
               --health-retries=3 \
-              mylibrary.lk:latest
+              --health-start-period=10s \
+              mylibrary-website-live:latest
 
             # Cleanup
             docker image prune -f
