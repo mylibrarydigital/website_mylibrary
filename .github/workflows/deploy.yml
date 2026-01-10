@@ -49,7 +49,7 @@ jobs:
           username: ubuntu
           key: ${{ secrets.LIGHTSAIL_LIVE_SSH_KEY }}
           source: mylibrary-website-live.tar.gz
-          target: /opt/mylibrary/mylibrary.lk/
+          target: /tmp/
 
       - name: Deploy on Lightsail
         uses: appleboy/ssh-action@master
@@ -59,7 +59,28 @@ jobs:
           key: ${{ secrets.LIGHTSAIL_LIVE_SSH_KEY }}
           script: |
             set -e
+            
+            # Verify file was copied successfully
+            if [ ! -f /tmp/mylibrary-website-live.tar.gz ]; then
+              echo "Error: File /tmp/mylibrary-website-live.tar.gz not found!"
+              exit 1
+            fi
+            
+            # Ensure target directory exists and has correct permissions
+            sudo mkdir -p /opt/mylibrary/mylibrary.lk
+            sudo chown ubuntu:ubuntu /opt/mylibrary/mylibrary.lk
+            
+            # Move file from /tmp to target directory with proper permissions
+            sudo mv /tmp/mylibrary-website-live.tar.gz /opt/mylibrary/mylibrary.lk/
+            sudo chown ubuntu:ubuntu /opt/mylibrary/mylibrary.lk/mylibrary-website-live.tar.gz
+            
             cd /opt/mylibrary/mylibrary.lk
+            
+            # Verify file is accessible
+            if [ ! -f mylibrary-website-live.tar.gz ]; then
+              echo "Error: File not found in target directory!"
+              exit 1
+            fi
 
             # Load and run container
             docker load < mylibrary-website-live.tar.gz
@@ -82,7 +103,10 @@ jobs:
               --health-start-period=10s \
               mylibrary-website-live:latest
 
-            # Cleanup
+            # Cleanup - remove loaded tar.gz file to save disk space
+            rm -f mylibrary-website-live.tar.gz
+            
+            # Cleanup unused Docker images
             docker image prune -f
 
             # Restart services
