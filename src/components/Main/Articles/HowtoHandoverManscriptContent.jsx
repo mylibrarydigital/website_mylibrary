@@ -86,7 +86,7 @@ const Howto = () => {
         <p className="text-[#090909] leading-8">
           මේ සඳහා අවශ්‍ය සහාය ඔබට 'My Library' ආයතනය වෙතින්ද ලබා ගත හැක. ඔබේ
           අත්පිටපත proof reader කරගැනීම සඳහා අප සමඟ සම්බන්ධ වන්න.
-          <a href="#" >අමතන්න.</a>
+          <a href="/contact" >අමතන්න.</a>
         </p>
         <br />
         <div>

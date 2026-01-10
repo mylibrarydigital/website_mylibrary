@@ -39,24 +39,24 @@ const Navbar = () => {
               </li>
               
             <li>
-                <a href='#'>Convert to Ebook</a>
+                <a href='/HowtoHandoverManscriptContent'>Convert to Ebook</a>
               </li>
               <li>
-                <a href='#'>Covert to Audiobook</a>
+                <a href='/HowtoHandoverManscriptContent'>Covert to Audiobook</a>
               </li>
               <li>
-                <a href='#'>New Authors</a>
+                <a href='/HowtoHandoverManscriptContent'>New Authors</a>
               </li>
              
             </ul>
           </li>
           <li class='dropdown'>
-            <a href='#'>
+            <a href='/HowtoHandoverManscriptContent'>
               <span>My Library</span> <i class='bi bi-chevron-down'></i>
             </a>
             <ul>
               <li>
-                <a href='#'>Libraries and Books</a>
+                <a href='/HowtoHandoverManscriptContent'>Libraries and Books</a>
               </li>
               <li>
                 <a href='AuthorsContent'>Authors</a>

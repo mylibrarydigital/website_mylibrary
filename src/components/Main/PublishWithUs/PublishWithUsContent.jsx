@@ -21,7 +21,7 @@ const PublishWithUsContent = () => {
             <br />2. Audio books - ශ්‍රව්‍ය ග්‍රන්ථ
             Digital ග්‍රන්ථ වල විශේෂත්වය වනුයේ ඔබ සතුව ඇති ජංගම දුරකථනයක් හෝ වෙනත් Digital උපාංග භාවිතා කර කියවීමට හෝ ඇසීමට ඇති හැකියාවයි.
           </p>
-          <p class="para-body1"> <a href='#'>Digital ග්‍රන්ථ ගැන වැඩිදුර කියවීම සඳහා පිවිසෙන්න.</a></p>
+          <p class="para-body1"> <button type="button" className="btn-link p-0 border-0 bg-transparent text-decoration-underline" style={{cursor: 'pointer', color: 'inherit'}}>Digital ග්‍රන්ථ ගැන වැඩිදුර කියවීම සඳහා පිවිසෙන්න.</button></p>
           <br />
           <br />
           <h2 class="para-body2" > ඔබ සතුව ඇති කතෘ ප්‍රකාශන, ප්‍රකාශන අයතිය සහිත ග්‍රන්ථ හෝ අත් පිටපත  ඩිජිටල් පොතක් බවට පරිවර්තනය කරන්නේ කෙසේද?</h2>
@@ -42,7 +42,7 @@ const PublishWithUsContent = () => {
           </div>
           <p class="para-body1"> ඔබ සතුව ඇති ග්‍රන්ථයේ මුද්‍රණය කරන ලද පිටපත හෝ type කරන ලද අවසන් පිටපත පහත සඳහන් පෝරමය සම්පූර්ණ කර My Library වෙත email හෝ තැපැල් මඟින් ලබා දිය හැක.
           </p>
-          <p class="para-body1"> <a href='#'>Form එක මෙතැනින් download කරගන්න.</a></p>
+          <p class="para-body1"> <button type="button" className="btn-link p-0 border-0 bg-transparent text-decoration-underline" style={{cursor: 'pointer', color: 'inherit'}}>Form එක මෙතැනින් download කරගන්න.</button></p>
           <div className='flex flex-col md:flex-row'>
             <ul class="para-body1 pl-0">
               <li class="para-body5" >1.email මඟින් ග්‍රන්ථ digital පරිවර්ථන සඳහා ලබාදීම.</li>

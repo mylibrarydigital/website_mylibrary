@@ -46,16 +46,16 @@ const Footer = () => {
                 <h3 className='text-white'>Navigation</h3>
                 <ul className='list-unstyled'>
                   <li>
-                    <a href='#'>About</a>
+                    <a href='/about'>About</a>
                   </li>
                   <li>
-                    <a href='#'>New Authors</a>
+                    <a href='/PublishWithUsContent'>New Authors</a>
                   </li>
                   <li>
-                    <a href='#'>Blog</a>
+                    <a href='/HowtoHandoverManscriptContent'>Blog</a>
                   </li>
                   <li>
-                    <a href='#'>Contact</a>
+                    <a href='/contact'>Contact</a>
                   </li>
                 </ul>
               </div>
@@ -63,16 +63,16 @@ const Footer = () => {
                 <h3 className='text-white'>Policies and Conditions</h3>
                 <ul className='list-unstyled'>
                   <li>
-                    <a href='PrivacyPolicy'>Privacy Policy</a>
+                    <a href='/PrivacyPolicy'>Privacy Policy</a>
                   </li>
                   <li>
-                    <a href='#'>Subscription Policy</a>
+                    <button type="button" className="btn-link text-white p-0 border-0 bg-transparent text-decoration-underline" style={{cursor: 'pointer', display: 'block', width: '100%', textAlign: 'left'}}>Subscription Policy</button>
                   </li>
                   <li>
-                    <a href='#'>Terms</a>
+                    <button type="button" className="btn-link text-white p-0 border-0 bg-transparent text-decoration-underline" style={{cursor: 'pointer', display: 'block', width: '100%', textAlign: 'left'}}>Terms</button>
                   </li>
                   <li>
-                    <a href='#'>Copyrights</a>
+                    <button type="button" className="btn-link text-white p-0 border-0 bg-transparent text-decoration-underline" style={{cursor: 'pointer', display: 'block', width: '100%', textAlign: 'left'}}>Copyrights</button>
                   </li>
                 </ul>
               </div>
@@ -83,7 +83,7 @@ const Footer = () => {
                     <a href='#'>Get from the App Store</a>
                   </li> */}
                   <li>
-                    <a href='#'>Get from the Play Store</a>
+                    <button type="button" className="btn-link text-white p-0 border-0 bg-transparent text-decoration-underline" style={{cursor: 'pointer', display: 'block', width: '100%', textAlign: 'left'}}>Get from the Play Store</button>
                   </li>
                 </ul>
               </div>
