@@ -1,0 +1,14 @@
+[
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "com.iamkw97.mylibraryv3",
+            "sha256_cert_fingerprints": [
+                "5b8eb91b7eebf5e5534ac21c0b595923c88e44520cc048517ac824d4cc34e6a0"
+            ]
+        }
+    }
+]
