@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { googlePlayBadge } from '../assets';
 import { useGetBookByIdQuery } from '../store/api/bookApi';
@@ -7,6 +7,7 @@ import { PLAYSTORE_URL } from '../utils/endpoint';
 const BookPreview = () => {
   const { id } = useParams();
   const { data: book, isLoading: loading, isError, error } = useGetBookByIdQuery(id);
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleOpenInApp = () => {
     // Use Android App Link (HTTPS URL)
@@ -106,14 +107,15 @@ const BookPreview = () => {
 
                   {/* Action Buttons */}
                   <div className="mt-5 pt-4 border-top">
-                    <div className="d-flex flex-column flex-md-row gap-3 align-items-start">
+                    <div className="d-flex flex-column flex-md-row gap-3 align-items-center">
                       <button
                         onClick={handleOpenInApp}
-                        className="btn btn-primary btn-lg px-4 py-3"
+                        className="btn btn-primary btn-lg px-4 py-3 d-flex align-items-center justify-content-center"
                         style={{
                           backgroundColor: '#529d96',
                           borderColor: '#529d96',
                           minWidth: '200px',
+                          height: '56px',
                         }}
                       >
                         <i className="bi bi-box-arrow-up-right me-2"></i>
@@ -124,17 +126,22 @@ const BookPreview = () => {
                         href={PLAYSTORE_URL}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn btn-outline-primary btn-lg px-4 py-3 d-inline-flex align-items-center"
+                        className="btn btn-outline-primary btn-lg px-4 py-3 d-flex align-items-center justify-content-center"
                         style={{
                           borderColor: '#529d96',
-                          color: '#529d96',
+                          color: isHovered ? '#ffffff' : '#529d96',
+                          backgroundColor: isHovered ? '#529d96' : 'transparent',
                           minWidth: '200px',
+                          height: '56px',
+                          transition: 'all 0.3s ease',
                         }}
+                        onMouseEnter={() => setIsHovered(true)}
+                        onMouseLeave={() => setIsHovered(false)}
                       >
                         <img
                           src={googlePlayBadge}
                           alt="Get it on Google Play"
-                          style={{ height: '40px', marginRight: '10px' }}
+                          style={{ height: '32px', marginRight: '10px', objectFit: 'contain' }}
                         />
                         Get the App
                       </a>
