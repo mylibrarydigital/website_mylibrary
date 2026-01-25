@@ -7,5 +7,6 @@ import About from './About';
 import PublishWithUsContent from './PublishWithUsContent';
 import AuthorsContent from './AuthorsContent';
 import HowtoHandoverManscriptContent from './HowtoHandoverManscriptContent';
+import BookPreview from './BookPreview';
 
-export { Home, Main, Admin, Login, Contact, About, PublishWithUsContent, AuthorsContent, HowtoHandoverManscriptContent };
+export { Home, Main, Admin, Login, Contact, About, PublishWithUsContent, AuthorsContent, HowtoHandoverManscriptContent, BookPreview };
