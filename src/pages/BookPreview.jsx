@@ -1,61 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import { googlePlayBadge } from '../assets';
+import { useGetBookByIdQuery } from '../store/api/bookApi';
+import { PLAYSTORE_URL } from '../utils/endpoint';
 
 const BookPreview = () => {
   const { id } = useParams();
-  const [book, setBook] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    // TODO: Replace with your actual API endpoint
-    // For now, this is a placeholder that you can update with your API
-    const fetchBook = async () => {
-      try {
-        setLoading(true);
-        // Example API call - replace with your actual endpoint
-        // const response = await fetch(`https://api.mylibrary.lk/api/books/${id}`);
-        // const data = await response.json();
-        // setBook(data);
-
-        // Placeholder data - remove this when you have an API
-        // This simulates a book object structure
-        setTimeout(() => {
-          setBook({
-            id: id,
-            title: 'Book Title',
-            author: 'Author Name',
-            description: 'This is a sample book description. Replace this with actual book data from your API.',
-            coverImage: '/logo512.png', // Placeholder image
-            category: 'Fiction',
-            language: 'Sinhala',
-          });
-          setLoading(false);
-        }, 500);
-      } catch (err) {
-        setError('Failed to load book details');
-        setLoading(false);
-      }
-    };
-
-    fetchBook();
-  }, [id]);
+  const { data: book, isLoading: loading, isError, error } = useGetBookByIdQuery(id);
 
   const handleOpenInApp = () => {
-    // Try custom URL scheme first (mylibrary://book/:id)
-    // This is faster if the app is installed
-    const customScheme = `mylibrary://book/${id}`;
-    
-    // Try to open with custom scheme
-    window.location.href = customScheme;
-    
-    // Fallback: If custom scheme doesn't work (app not installed),
-    // the browser will stay on the current page, which is fine
-    // The user can then use the "Get the App" button
+    // Use Android App Link (HTTPS URL)
+    // If the app is installed and verified, Android will automatically open it
+    // If not installed, the user stays on this web page (web fallback)
+    const appLink = `https://mylibrary.lk/book/${id}`;
+    window.location.href = appLink;
   };
-
-  const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.iamkw97.mylibraryv3&pcampaignid=web_share';
 
   if (loading) {
     return (
@@ -72,18 +31,26 @@ const BookPreview = () => {
     );
   }
 
-  if (error || !book) {
+  if (isError) {
     return (
       <div className="container my-5 py-5">
         <div className="row justify-content-center">
           <div className="col-md-8 text-center">
             <h2>Book Not Found</h2>
-            <p className="text-muted">The book you're looking for doesn't exist or couldn't be loaded.</p>
-            <a href="/" className="btn btn-primary mt-3">Go to Home</a>
+            <p className="text-muted">
+              {error?.data?.message || error?.message || 'The book you\'re looking for doesn\'t exist or couldn\'t be loaded.'}
+            </p>
+            <a href="/" className="btn btn-primary mt-3" style={{ backgroundColor: '#529d96', borderColor: '#529d96' }}>
+              Go to Home
+            </a>
           </div>
         </div>
       </div>
     );
+  }
+
+  if (!book) {
+    return null;
   }
 
   return (
@@ -115,11 +82,19 @@ const BookPreview = () => {
                     </p>
                   )}
 
-                  {book.category && (
-                    <span className="badge bg-secondary mb-3 me-2">{book.category}</span>
+                  {/* Display categories */}
+                  {book.categories && book.categories.length > 0 && (
+                    <div className="mb-3">
+                      {book.categories.map((cat, index) => (
+                        <span key={index} className="badge bg-secondary me-2 mb-2">
+                          {cat.name}
+                        </span>
+                      ))}
+                    </div>
                   )}
-                  {book.language && (
-                    <span className="badge bg-info mb-3">{book.language}</span>
+                  {/* Display library */}
+                  {book.library && (
+                    <span className="badge bg-info mb-3">{book.library.name}</span>
                   )}
 
                   <div className="my-4">
@@ -146,7 +121,7 @@ const BookPreview = () => {
                       </button>
 
                       <a
-                        href={playStoreUrl}
+                        href={PLAYSTORE_URL}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn btn-outline-primary btn-lg px-4 py-3 d-inline-flex align-items-center"
