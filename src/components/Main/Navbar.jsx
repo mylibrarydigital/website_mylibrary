@@ -50,9 +50,9 @@ const Navbar = () => {
              
             </ul>
           </li>
-          <li class='dropdown'>
+          <li className='dropdown'>
             <a href='/HowtoHandoverManscriptContent'>
-              <span>My Library</span> <i class='bi bi-chevron-down'></i>
+              <span>My Library</span> <i className='bi bi-chevron-down'></i>
             </a>
             <ul>
               <li>
@@ -88,7 +88,7 @@ const Navbar = () => {
          
         </ul>
         <button
-          class='bi bi-list mobile-nav-toggle'
+          className='bi bi-list mobile-nav-toggle'
           onClick={() => setShowMenu(!showMenu)}
         >
           <HiOutlineMenu />
