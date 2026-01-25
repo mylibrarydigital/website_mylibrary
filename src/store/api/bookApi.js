@@ -4,7 +4,7 @@ import { BASE_URL } from '../../utils/endpoint';
 export const bookApi = createApi({
   reducerPath: 'bookApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: `${BASE_URL}/api/web/base`,
+    baseUrl: `${BASE_URL}/base`,
     prepareHeaders: (headers, { getState }) => {
       // Add any auth headers if needed
       // const token = getState().auth?.token;
