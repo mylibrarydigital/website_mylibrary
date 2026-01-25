@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import { Main, Admin, Home, Login, Contact, About, PublishWithUsContent, AuthorsContent } from './pages';
+import { Main, Admin, Home, Login, Contact, About, PublishWithUsContent, AuthorsContent, BookPreview } from './pages';
 import { Profile, MyBooks } from './components';
 import BlogSection from "./components/Main/Home/BlogSectionOld";
 import { HowtoHandoverManscriptContent } from './pages';
@@ -27,6 +27,7 @@ const App = () => {
           <Route path='AuthorsContent' element={<AuthorsContent />} />
           <Route path='blog' element={<BlogSection />} />
           <Route path='PrivacyPolicy' element={<PrivacyPolicy />} />
+          <Route path='book/:id' element={<BookPreview />} />
         </Route>
         <Route path='/admin' element={<Admin />}>
           <Route path='profile' element={<Profile />} />
