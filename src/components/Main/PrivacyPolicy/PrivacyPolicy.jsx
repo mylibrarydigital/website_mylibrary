@@ -155,7 +155,7 @@ const PrivacyPolicy = () => {
             <ul class="para-body1">
               <li >For questions or concerns about this Privacy Policy, contact us at:</li>
               <li >Email: mylibrary.digital.lk@gmail.com</li>
-              <li >Whatsapp: +94 72 076 4777</li>
+              <li >Whatsapp: +94 77 037 4777</li>
             </ul>
         </div>
         <br />  <br />

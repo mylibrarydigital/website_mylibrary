@@ -41,7 +41,7 @@ const ContactForm = () => {
                     e.currentTarget.style.textDecoration = 'none';
                   }}
                 >
-                  +94 74 076 4777
+                  +94 77 037 4777
                 </a>
               </li>
               <li class='mb-3'>
