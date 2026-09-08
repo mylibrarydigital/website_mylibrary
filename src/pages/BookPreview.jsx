@@ -63,7 +63,7 @@ const BookPreview = () => {
               {/* Book Cover */}
               <div className="col-md-4 text-center p-4 d-flex align-items-center justify-content-center bg-light">
                 <img
-                  src={book.coverImage || '/logo512.png'}
+                  src={book.coverImage || '/android-chrome-512x512.png'}
                   alt={book.title}
                   className="img-fluid rounded shadow"
                   style={{ maxHeight: '500px', objectFit: 'contain' }}
