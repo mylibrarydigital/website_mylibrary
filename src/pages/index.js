@@ -8,5 +8,6 @@ import PublishWithUsContent from './PublishWithUsContent';
 import AuthorsContent from './AuthorsContent';
 import HowtoHandoverManscriptContent from './HowtoHandoverManscriptContent';
 import BookPreview from './BookPreview';
+import Books from './Books';
 
-export { Home, Main, Admin, Login, Contact, About, PublishWithUsContent, AuthorsContent, HowtoHandoverManscriptContent, BookPreview };
+export { Home, Main, Admin, Login, Contact, About, PublishWithUsContent, AuthorsContent, HowtoHandoverManscriptContent, BookPreview, Books };
