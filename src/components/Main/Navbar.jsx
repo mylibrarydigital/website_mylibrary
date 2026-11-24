@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { HiOutlineMenu } from 'react-icons/hi';
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const { pathname } = useLocation();
+  const isBooksActive = pathname === '/books' || pathname.startsWith('/book/');
+
   return (
     <div className='container d-flex justify-content-between align-items-center '>
       <div className='logo '>
@@ -21,12 +25,21 @@ const Navbar = () => {
       >
         <ul>
           <li>
-            <a className='active  cursor-pointer' href='/'>
+            <a className={`${pathname === '/' ? 'active' : ''} cursor-pointer`} href='/'>
               Home
             </a>
           </li>
           <li>
-            <a href='about'>About</a>
+            <Link
+              to='/books'
+              className={`${isBooksActive ? 'active' : ''} cursor-pointer`}
+              onClick={() => setShowMenu(false)}
+            >
+              Books
+            </Link>
+          </li>
+          <li>
+            <a href='/about'>About</a>
           </li>
           <li className='dropdown cursor-pointer'>
             <a href='PublishWithUsContent'>

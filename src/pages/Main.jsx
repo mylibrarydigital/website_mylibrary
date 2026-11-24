@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import { FaWhatsapp } from 'react-icons/fa';
 
 import { Footer, Navbar } from '../components';
-import { Home, Contact, About, PublishWithUsContent, HowtoHandoverManscriptContent, BookPreview } from '../pages';
+import { Home, Contact, About, PublishWithUsContent, HowtoHandoverManscriptContent, BookPreview, Books } from '../pages';
 import PrivacyPolicy from '../components/Main/PrivacyPolicy/PrivacyPolicy';
 
 const Main = () => {
@@ -32,6 +32,7 @@ const Main = () => {
             path='PrivacyPolicy'
             element={<PrivacyPolicy />}
           />
+          <Route path='books' element={<Books />} />
           <Route path='book/:id' element={<BookPreview />} />
         </Routes>
 
